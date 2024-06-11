@@ -1,0 +1,17 @@
+#exercice-header {
+  background-color: #343541;
+  border-bottom: 0px !important;
+  height: 40px;
+}
+
+.loginForm {
+  min-height: calc(100vh - 160px);
+}
+
+.view {
+    min-height: calc(100vh - 200px);
+  }
+
+.error-div {
+  min-height: 50px;
+}
