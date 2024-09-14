@@ -12,26 +12,26 @@
   if(isset($_POST['firstname']) || isset($_POST['lastname'])) {
     if(!isset($_POST['csrf_token']) || empty($_POST['csrf_token'])) {
       if(!isset($error) || empty($error)) {
-        header("HTTP/1.1 400 Bad Request");
-        $error = "Attaque CSRF détectée.";
+        header("Location: profile.php?error=" . urlencode('Attaque CSRF détectée.'), true, 302);
+        exit();
       }
     }
     if($_POST['csrf_token'] !== $_SESSION['csrf_token']) {
       if(!isset($error) || empty($error)) {
-        header("HTTP/1.1 400 Bad Request");
-        $error = "Attaque CSRF détectée.";
+        header("Location: profile.php?error=" . urlencode('Attaque CSRF détectée.'), true, 302);
+        exit();
       }
     }
     if(isset($_POST['firstname']) && empty($_POST['firstname'])) {
       if(!isset($error) || empty($error)) {
-        header("HTTP/1.1 400 Bad Request");
-        $error = "Le prénom doit être renseigné.";
+        header("Location: profile.php?error=" . urlencode('Le prénom doit être renseigné.'), true, 302);
+        exit();
       }
     }
     if(isset($_POST['lastname']) && empty($_POST['lastname'])) {
       if(!isset($error) || empty($error)) {
-        header("HTTP/1.1 400 Bad Request");
-        $error = "Le nom doit être renseigné.";
+        header("Location: profile.php?error=" . urlencode('Le nom doit être renseigné.'), true, 302);
+        exit();
       }
     }
 
@@ -47,7 +47,8 @@
           $stmt->bindParam(3, $_SESSION["id"], PDO::PARAM_INT);
           $stmt->execute();
 
-          $message = "Votre compte a été mis à jour avec succès.";
+          header("Location: profile.php?message=" . urlencode('Votre compte a été mis à jour avec succès.'), true, 302);
+          exit();
         }        
       }   
       catch(Exception $e) {
@@ -71,14 +72,14 @@
 
       if(!$user) {
         if(!isset($error) || empty($error)) {
-          header("HTTP/1.1 404 Not Found");
-           $error = "Aucun utilisateur trouvé.";
+          header("Location: profile.php?error=" . urlencode('Aucun utilisateur trouvé.'), true, 302);
+          exit();
         }
       }
     }
     catch(Exception $e) {
-      header("HTTP/1.1 500 Internal Server Error");
-      $error = "Une erreur technique s'est produite.";
+      header("Location: profile.php?error=" . urlencode('Une erreur technique s\'est produite.'), true, 302);
+      exit();
     }          
   }  
 ?>

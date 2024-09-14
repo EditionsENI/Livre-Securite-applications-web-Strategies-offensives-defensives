@@ -90,7 +90,7 @@
                     ?>
                   </div>
                   <?php
-                    if(isset($user) && !isset($error)) {
+                    if(isset($users) && !isset($error)) {
                   ?>
                       <div class="bg-white pt-3 ps-3 pe-3 border border-secondary rounded">
                         <?php

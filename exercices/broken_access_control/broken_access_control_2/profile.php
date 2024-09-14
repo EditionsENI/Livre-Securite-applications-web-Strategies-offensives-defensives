@@ -136,7 +136,7 @@
                             <label for="lastname" class="form-label fw-bold text-dark">Nom :</label>
                             <input type="text" class="form-control" id="lastname" name="lastname" value="<?php echo htmlspecialchars($user['lastname'], ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401); ?>">
                           </div>
-                          <input type="hidden" class="form-control" id="role" name="role" value="<?php echo htmlspecialchars($user['role'], ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401); ?>" disabled>
+                          <input type="hidden" class="form-control" id="role" name="role" value="<?php echo htmlspecialchars($user['role'], ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401); ?>">
                           <div class="d-grid">
                             <button type="submit" name="signup" class="btn btn-dark text-light">Mettre à jour</button>
                           </div>
